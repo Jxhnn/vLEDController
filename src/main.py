@@ -35,16 +35,15 @@ def flashLED():
                 currentBoard.digital[pin].write(round(maxPWM.value/255,2))
             else:
                 currentBoard.digital[pin].write(1)
-            plot_values.append(1)
+            plot_values.append(maxPWM.value/255,2)
             if (len(plot_values) > 40):
                 plot_values.pop(0)
             time.sleep(float(currentInterval))
-            # print(currentBoard.digital[pin].read())
             if (checkPWM() == 1):
                 currentBoard.digital[pin].write(round(minPWM.value/255,2))
             else:
                 currentBoard.digital[pin].write(0)
-            plot_values.append(0)
+            plot_values.append(minPWM.value/255)
             if (len(plot_values) > 40):
                 plot_values.pop(0)
             time.sleep(float(currentInterval))
